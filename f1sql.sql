@@ -33,7 +33,7 @@ INSERT INTO drivers VALUES (
 CREATE TABLE races IF NOT EXISTS (
     round_number INT PRIMARY KEY,
     country VARCHAR(255) NOT NULL,
-    track_name VARCHAR(255) NOT NULL,
+    GP_name VARCHAR(255) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     distance FLOAT(3) NOT NULL,
@@ -73,16 +73,60 @@ CREATE TABLE IF NOT EXISTS team_specifications (
     engine_supplier VARCHAR(255) NOT NULL,
     location VARCHAR(255) NOT NULL,
     constructor_points INT NOT NULL,
+    GP_points INT NOT NULL,
     GP_wins INT NOT NULL,
     GP_poles INT NOT NULL,
+    sprint_points INT NOT NULL,
     sprint_wins INT NOT NULL,
     sprint_poles INT NOT NULL,
 );
 
+INSERT INTO team_specifications VALUES (
+    ('McLaren', 'Mercedes', 'Great Britain', 833, 775, 14, 13, 58, 3, 3),
+    ('Mercedes', 'Mercedes', 'Great Britain', 469, 424, 2, 2, 45, 0, 1),
+    ('Alpine', 'Renault', 'Great Britain', 22, 20, 0, 0, 2, 0, 0),
+    ('Sauber', 'Ferrari', 'Switzerland', 70, 70, 0, 0, 0, 0, 0),
+    ('Haas F1 Team', 'Ferrari', 'United States', 79, 73, 0, 0, 6, 0, 0),
+    ('Red Bull Racing', 'Honda RBPT', 'Great Britain', 451, 410, 8, 8, 41, 2, 1),
+    ('Racing Bulls', 'Honda RBPT', 'Italy', 92, 88, 0, 0, 4, 0, 0),
+    ('Williams', 'Mercedes', 'Great Britain', 137, 124, 0, 0, 13, 0, 0),
+    ('Ferrari', 'Ferrari', 'Italy', 398, 360, 0, 1, 38, 1, 1),
+    ('Aston Martin', 'Mercedes', 'Great Britain', 89, 80, 0, 0, 9, 0, 0)
+);
+
 CREATE TABLE IF NOT EXISTS fastest_lap_times (
+    track_name VARCHAR(255) NOT NULL,
+    GP VARCHAR(255) NOT NULL,
+    driver_number INT NOT NULL,
+    driver_name VARCHAR(255) NOT NULL,
+    driver_surname VARCHAR(255) NOT NULL,
+    team VARCHAR(255) NOT NULL,
+    lap_time TIME(3) NOT NULL
 )
 
---Ferrari: Provides power units to its own team and customer teams such as Haas and Sauber.
---Mercedes: Supplies engines to Mercedes-AMG Petronas Formula One Team, McLaren, and Williams.
---Honda RBPT: Continues its partnership with Red Bull Racing and its sister team, Racing Bulls, supplying them with power units.
---Renault: Powers the Alpine team, with plans to cease engine production after the 2025 season.
+INSERT INTO fastest_lap_times VALUES (
+    ('Albert Park Grand Prix Circuit', 'Australia', 4, 'Lando', 'Norris', 'McLaren', '1:22.167'),
+    ('Shanghai International Circuit', 'China', 4, 'Lando', 'Norris', 'McLaren', '1:35.454'),
+    ('Suzuka Circuit', 'Japan', 12, 'Kimi', 'Antonelli', 'Mercedes', '1:30.965'),
+    ('Bahrain International Circuit', 'Bahrain', 81, 'Oscar', 'Piastri', 'McLaren', '1:35.140'),
+    ('Jeddah Corniche Circuit', 'Saudi Arabia', 4, 'Lando', 'Norris', 'McLaren', '1:31.778'),
+    ('Miami International Autodrome', 'Miami', 4, 'Lando', 'Norris', 'McLaren', '1:29.746'),
+    ('Autodromo Internazionale Enzo e Dino Ferrari', 'Emilia-Romagna', 1, 'Max', 'Verstappen', 'Red Bull Racing', '1:17.988'),
+    ('Circuit de Monaco', 'Monaco', 4, 'Lando', 'Norris', 'McLaren', '1:13.221'),
+    ('Circuit de Barcelona-Catalunya', 'Spain', 81, 'Oscar', 'Piastri', 'McLaren', '1:15.743'),
+    ('Circuit Gilles-Villeneuve', 'Canada', 63, 'George', 'Russel', 'Mercedes', '1:14.119'),
+    ('Red Bull Ring', 'Austria', 81, 'Oscar', 'Piastri', 'McLaren', '1:07.924'),
+    ('Silverstone Circuit', 'Great Britain', 81, 'Oscar', 'Piastri', 'McLaren', '1:29.337'),
+    ('Circuit de Spa-Francorchamps', 'Belgium', 12, 'Kimi', 'Antonelli', 'Mercedes', '1:44.861'),
+    ('Hungaroring', 'Hungary', 63, 'George', 'Russel', 'Mercedes', '1:19.409'),
+    ('Circuit Zandvoort', 'Netherlands', 81, 'Oscar', 'Piastri', 'McLaren', '1:12.271'),
+    ('Autodromo Nazionale Monza', 'Italy', 4, 'Lando', 'Norris', 'McLaren', '1:20.901'),
+    ('Baku City Circuit', 'Azerbaijan', 1, 'Max', 'Verstappen', 'Red Bull Racing', '1:43.388'),
+    ('Marina Bay Street Circuit', 'Singapore', 44, 'Lewis', 'Hamilton', 'Ferrari', '1:33.808'),
+    ('Circuit of The Americas', 'United States', 12, 'Kimi', 'Antonelli', 'Mercedes', '1:37.577'),
+    ('Autódromo Hermanos Rodríguez', 'Mexico', 63, 'George', 'Russel', 'Mercedes', '1:20.052'),
+    ('Autódromo José Carlos Pace', 'Brazil', 23, 'Alexander', 'Albon', 'Williams', '1:12.400'),
+    ('Las Vegas Strip Circuit', 'Las Vegas', 1, 'Max', 'Verstappen', 'Red Bull Racing', '1:33.365'),
+    ('Lusail International Circuit', 'Qatar', 81, 'Oscar', 'Piastri', 'McLaren', '1:22.996'),
+    ('Yas Marina Circuit', 'Abu Dhabi', 16, 'Charles', 'Leclerc', 'Ferrari', '1:26.725')
+);
