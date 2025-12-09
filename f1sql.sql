@@ -32,8 +32,8 @@ INSERT INTO drivers VALUES (
 
 CREATE TABLE races IF NOT EXISTS (
     round_number INT PRIMARY KEY,
-    country VARCHAR(255) NOT NULL,
     GP_name VARCHAR(255) NOT NULL,
+    GP_fullname VARCHAR(255) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     distance FLOAT(3) NOT NULL,
@@ -96,7 +96,7 @@ INSERT INTO team_specifications VALUES (
 
 CREATE TABLE IF NOT EXISTS fastest_lap_times (
     track_name VARCHAR(255) NOT NULL,
-    GP VARCHAR(255) NOT NULL,
+    GP_name VARCHAR(255) NOT NULL,
     driver_number INT NOT NULL,
     driver_name VARCHAR(255) NOT NULL,
     driver_surname VARCHAR(255) NOT NULL,
@@ -130,3 +130,42 @@ INSERT INTO fastest_lap_times VALUES (
     ('Lusail International Circuit', 'Qatar', 81, 'Oscar', 'Piastri', 'McLaren', '1:22.996'),
     ('Yas Marina Circuit', 'Abu Dhabi', 16, 'Charles', 'Leclerc', 'Ferrari', '1:26.725')
 );
+
+CREATE TABLE IF NOT EXISTS race_results (
+    GP_name VARCHAR(255) PRIMARY KEY,
+    race_date DATE NOT NULL,
+    winner_number VARCHAR(255) NOT NULL,
+    winner_name VARCHAR(255) NOT NULL,
+    winner_surname VARCHAR(255) NOT NULL,
+    team VARCHAR(255) NOT NULL,
+    laps_number INT NOT NULL,
+    race_time TIME(3) NOT NULL
+);
+
+INSERT INTO race_results VALUES (
+    ('Australia', '2025-03-16', 4, 'Lando', 'Norris', 'McLaren', 57, '1:42:06.304'),
+    ('China', '2025-03-23', 81, 'Oscar', 'Piastri', 'McLaren', 56, '1:30:55.026'),
+    ('Japan', '2025-04-06', 1, 'Max', 'Verstappen', 'Red Bull Racing', 53, '1:22:06.983'),
+    ('Bahrain', '2025-04-13', 81, 'Oscar', 'Piastri', 'McLaren', 57, '1:35:39.435'),
+    ('Saudi Arabia', '2025-04-20', 81, 'Oscar', 'Piastri', 'McLaren', 50, '1:21:06.758'),
+    ('Miami', '2025-05-04', 81, 'Oscar', 'Piastri', 'McLaren', 57, '1:28:51.587'),
+    ('Emilia-Romagna', '2025-05-18', 1, 'Max', 'Verstappen', 'Red Bull Racing', 63, '1:31:33.199'),
+    ('Monaco', '2025-05-25', 4, 'Lando', 'Norris', 'McLaren', 78, '1:40:33.843'),
+    ('Spain', '2025-06-01', 81, 'Oscar', 'Piastri', 'McLaren', 66, '1:32:57.375'),
+    ('Canada', '2025-06-15', 63, 'George', 'Russel', 'Mercedes', 70, '1:31:52.688'),
+    ('Austria', '2025-06-29', 4, 'Lando', 'Norris', 'McLaren', 70, '1:23:47.693'),
+    ('Great Britain', '2025-07-06', 4, 'Lando', 'Norris', 'McLaren', 52, '1:37:15.735'),
+    ('Belgium', '2025-07-27', 81, 'Oscar', 'Piastri', 'McLaren', 44, '1:25:22.601'),
+    ('Hungary', '2025-08-03', 4, 'Lando', 'Norris', 'McLaren', 70, '1:35:21.231'),
+    ('Netherlands', '2025-08-31', 81, 'Oscar', 'Piastri', 'McLaren', 72, '1:38:29.849'),
+    ('Italy', '2025-09-07', 1, 'Max', 'Verstappen', 'Red Bull Racing', 53, '1:13:24.325'),
+    ('Azerbaijan', '2025-09-21', 1, 'Max', 'Verstappen', 'Red Bull Racing', 51, '1:33:26.408'),
+    ('Singapore', '2025-10-05', 63, 'George', 'Russel', 'Mercedes', 62, '1:40:22.367'),
+    ('United States', '2025-10-19', 1, 'Max', 'Verstappen', 'Red Bull Racing', 56, '1:34:00.161'),
+    ('Mexico', '2025-10-26', 4, 'Lando', 'Norris', 'McLaren', 71, '1:37:58.574'),
+    ('Brazil', '2025-11-09', 4, 'Lando', 'Norris', 'McLaren', 71, '1:32:01.569'),
+    ('Las Vegas', '2025-11-22', 1, 'Max', 'Verstappen', 'Red Bull Racing', 50, '1:21:08.429'),
+    ('Qatar', '2025-11-30', 1, 'Max', 'Verstappen', 'Red Bull Racing', 57, '1:24:38.241'),
+    ('Abu Dhabi', '2025-12-07', 1, 'Max', 'Verstappen', 'Red Bull Racing', 58, '1:26:07.469')
+);
+
