@@ -67,3 +67,22 @@ INSERT INTO races VALUES (
     (23, 'Qatar', 'FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2025', '2025-11-28', '2025-11-30', 308.611, 5.419, 57), --sprint
     (24, 'Abu Dhabi', 'FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2025', '2025-12-05', '2025-12-07', 306.183, 5.281, 58)
 );
+
+CREATE TABLE IF NOT EXISTS team_specifications (
+    team VARCHAR(255) PRIMARY KEY,
+    engine_supplier VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    constructor_points INT NOT NULL,
+    GP_wins INT NOT NULL,
+    GP_poles INT NOT NULL,
+    sprint_wins INT NOT NULL,
+    sprint_poles INT NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS fastest_lap_times (
+)
+
+--Ferrari: Provides power units to its own team and customer teams such as Haas and Sauber.
+--Mercedes: Supplies engines to Mercedes-AMG Petronas Formula One Team, McLaren, and Williams.
+--Honda RBPT: Continues its partnership with Red Bull Racing and its sister team, Racing Bulls, supplying them with power units.
+--Renault: Powers the Alpine team, with plans to cease engine production after the 2025 season.
