@@ -1,3 +1,5 @@
+DROP TABLE drivers, races, fastest_lap_times, race_results, team_specifications;
+
 CREATE TABLE IF NOT EXISTS drivers (
     number INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,

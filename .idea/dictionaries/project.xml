@@ -9,10 +9,16 @@
       <w>frrows</w>
       <w>fseconds</w>
       <w>prix</w>
+      <w>racedate</w>
+      <w>racetime</w>
+      <w>rcircuit</w>
+      <w>rdistance</w>
       <w>rhours</w>
+      <w>rlaps</w>
       <w>rmilliseconds</w>
       <w>rminutes</w>
       <w>rseconds</w>
+      <w>rstart</w>
     </words>
   </dictionary>
 </component>
