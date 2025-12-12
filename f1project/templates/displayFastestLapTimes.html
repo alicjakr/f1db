@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fastest lap times</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Track name</th>
+        <th>GP name</th>
+        <th>Driver's number</th>
+        <th>Driver's name</th>
+        <th>Driver's surname</th>
+        <th>Driver's team/th>
+        <th>Driver's lap time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{record.track_name}}</td>
+        <td>{{record.gp_name}}</td>
+        <td>{{record.driver_number}}</td>
+        <td>{{record.driver_name}}</td>
+        <td>{{record.driver_surname}}</td>
+        <td>{{record.team}}</td>
+        <td>{{record.lap_time}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

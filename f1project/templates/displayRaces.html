@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Races</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Round number</th>
+        <th>GP name</th>
+        <th>GP fullname</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Distance</th>
+        <th>Circuit length</th>
+        <th>Laps number</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{record.round_number}}</td>
+        <td>{{record.gp_name}}</td>
+        <td>{{record.gp_fullname}}</td>
+        <td>{{record.start_date}}</td>
+        <td>{{record.end_date}}</td>
+        <td>{{record.distance}}</td>
+        <td>{{record.circuit_length}}</td>
+        <td>{{record.laps_number}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

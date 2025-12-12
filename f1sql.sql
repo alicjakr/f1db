@@ -132,7 +132,7 @@ INSERT INTO fastest_lap_times VALUES
 CREATE TABLE IF NOT EXISTS race_results (
     GP_name VARCHAR(255) PRIMARY KEY,
     race_date DATE NOT NULL,
-    winner_number VARCHAR(255) NOT NULL,
+    winner_number INT NOT NULL,
     winner_name VARCHAR(255) NOT NULL,
     winner_surname VARCHAR(255) NOT NULL,
     team VARCHAR(255) NOT NULL,

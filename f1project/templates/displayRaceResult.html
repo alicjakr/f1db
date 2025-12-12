@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Race results</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>GP name</th>
+        <th>Race date</th>
+        <th>Winner's number</th>
+        <th>Winner's name</th>
+        <th>Winner's surname</th>
+        <th>Winner's team/th>
+        <th>Laps number</th>
+        <th>Race time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{record.gp_name}}</td>
+        <td>{{record.race_date}}</td>
+        <td>{{record.winner_number}}</td>
+        <td>{{record.winner_name}}</td>
+        <td>{{record.winner_surname}}</td>
+        <td>{{record.team}}</td>
+        <td>{{record.laps_number}}</td>
+        <td>{{record.race_time}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

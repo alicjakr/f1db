@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drivers</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Team</th>
+        <th>Current points</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{record.number}}</td>
+        <td>{{record.name}}</td>
+        <td>{{record.surname}}</td>
+        <td>{{record.team}}</td>
+        <td>{{record.current_points}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
