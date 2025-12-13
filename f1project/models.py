@@ -37,7 +37,7 @@ class Races(models.Model):
         db_table="races"
 
 class FastestLapTimes(models.Model):
-    track_name=models.CharField(max_length=100)
+    track_name=models.CharField(max_length=100, primary_key=True)
     gp_name=models.CharField(max_length=100)
     driver_number=models.IntegerField()
     driver_name=models.CharField(max_length=100)
@@ -45,7 +45,7 @@ class FastestLapTimes(models.Model):
     team=models.CharField(max_length=100)
     lap_time=models.TimeField()
     class Meta:
-        db_table="fastestlaptimes"
+        db_table="fastest_lap_times"
 
 class RaceResults(models.Model):
     gp_name=models.CharField(max_length=100, primary_key=True)
@@ -57,4 +57,4 @@ class RaceResults(models.Model):
     laps_number=models.IntegerField()
     race_time=models.TimeField()
     class Meta:
-        db_table="raceresults"
+        db_table="race_results"

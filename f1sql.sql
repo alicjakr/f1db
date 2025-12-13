@@ -94,7 +94,7 @@ INSERT INTO team_specifications VALUES
     ('Aston Martin', 'Mercedes', 'Great Britain', 89, 80, 0, 0, 9, 0, 0);
 
 CREATE TABLE IF NOT EXISTS fastest_lap_times (
-    track_name VARCHAR(255) NOT NULL,
+    track_name VARCHAR(255) PRIMARY KEY,
     GP_name VARCHAR(255) NOT NULL,
     driver_number INT NOT NULL,
     driver_name VARCHAR(255) NOT NULL,

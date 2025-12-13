@@ -28,7 +28,7 @@
         <td>{{record.winner_surname}}</td>
         <td>{{record.team}}</td>
         <td>{{record.laps_number}}</td>
-        <td>{{record.race_time}}</td>
+        <td>{{record.race_time|date:"h:i:s"}}.{{record.race_time.microsecond|stringformat:"06d"|slice:"3"}}</td>
     </tr>
     {% endfor %}
     </tbody>

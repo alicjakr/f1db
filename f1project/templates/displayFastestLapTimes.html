@@ -26,7 +26,7 @@
         <td>{{record.driver_name}}</td>
         <td>{{record.driver_surname}}</td>
         <td>{{record.team}}</td>
-        <td>{{record.lap_time}}</td>
+        <td>{{record.lap_time|date:"i:s"}}.{{record.lap_time.microsecond|stringformat:"06d"|slice:"3"}}</td>
     </tr>
     {% endfor %}
     </tbody>
