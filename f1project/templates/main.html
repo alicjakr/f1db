@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>Title</title>
 </head>
 <body>
@@ -19,6 +21,12 @@
     </a>
     <a href="{% url 'raceresults' %}">
         <button>Display race results</button>
+    </a>
+    <a href="{% url 'adddriver' %}">
+        <button>Add driver</button>
+    </a>
+    <a href="{% url 'addteam' %}">
+        <button>Add team</button>
     </a>
 </body>
 </html>

@@ -166,3 +166,7 @@ INSERT INTO race_results VALUES
     ('Qatar', '2025-11-30', 1, 'Max', 'Verstappen', 'Red Bull Racing', 57, '1:24:38.241'),
     ('Abu Dhabi', '2025-12-07', 1, 'Max', 'Verstappen', 'Red Bull Racing', 58, '1:26:07.469');
 
+CREATE PROCEDURE add_driver
+LANGUAGE SQL
+AS $$
+INSERT INTO drivers VALUES ()

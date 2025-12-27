@@ -26,5 +26,13 @@ urlpatterns = [
     path('races/', views.display_races, name='races'),
     path('fastestlaptimes/', views.display_fastest_lap_times, name='fastestlaptimes'),
     path('raceresults/', views.display_race_results, name='raceresults'),
+    path('adddriver/', views.add_driver, name='adddriver'),
+    path('adddriver/addrecord/', views.add_driver_record, name='adddriver_record'),
+    path('addteam/', views.add_team, name='addteam'),
+    path('addteam/addrecord/', views.add_team_record, name='addteam_record'),
     path('', views.main_page, name='main'),
 ]
+
+'''
+    path('adddriver/', views.add_a_driver, name='adddriver'),
+    path('addteam/', views.add_a_team, name='addteam'),'''

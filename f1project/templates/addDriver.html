@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Add driver</title>
+</head>
+<body>
+    <h1>Add driver</h1>
+
+    <form action="addrecord/" method="post">
+        {% csrf_token %}
+        Number:<br>
+        <input name="number">
+        <br><br>
+        First Name:<br>
+        <input name="first">
+        <br><br>
+        Last Name:<br>
+        <input name="last">
+        <br><br>
+        Team:<br>
+        <input name="team">
+        <br><br>
+        Current points:<br>
+        <input name="currentpoints">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
