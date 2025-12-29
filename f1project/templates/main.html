@@ -7,26 +7,35 @@
     <title>Title</title>
 </head>
 <body>
-    <a href="{% url 'drivers' %}">
-        <button>Display all drivers</button>
-    </a>
-    <a href="{% url 'teams' %}">
-        <button>Display all team specifications</button>
-    </a>
-    <a href="{% url 'races' %}">
-        <button>Display all races</button>
-    </a>
-    <a href="{% url 'fastestlaptimes' %}">
-        <button>Display fastest lap times</button>
-    </a>
-    <a href="{% url 'raceresults' %}">
-        <button>Display race results</button>
-    </a>
-    <a href="{% url 'adddriver' %}">
-        <button>Add driver</button>
-    </a>
-    <a href="{% url 'addteam' %}">
-        <button>Add team</button>
-    </a>
+    <div class="row1">
+        <h2>Tables</h2>
+        <a href="{% url 'drivers' %}">
+            <button>Display all drivers</button>
+        </a>
+        <a href="{% url 'teams' %}">
+            <button>Display all team specifications</button>
+        </a>
+        <a href="{% url 'races' %}">
+            <button>Display all races</button>
+        </a>
+        <a href="{% url 'fastestlaptimes' %}">
+            <button>Display fastest lap times</button>
+        </a>
+        <a href="{% url 'raceresults' %}">
+            <button>Display race results</button>
+        </a>
+    </div>
+    <div class="row2">
+        <h2>Modifiying tables</h2>
+        <a href="{% url 'adddriver' %}">
+            <button>Add driver</button>
+        </a>
+        <a href="{% url 'addteam' %}">
+            <button>Add team</button>
+        </a>
+    </div>
+    <div class="row3">
+        <h2>Display specific data</h2>
+    </div>
 </body>
 </html>

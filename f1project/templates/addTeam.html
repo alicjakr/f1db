@@ -7,41 +7,39 @@
     <title>Add team</title>
 </head>
 <body>
-<h1>Add team</h1>
-
-<form action="addrecord/" method="post">
-    {% csrf_token %}
-    Team:<br>
-    <input name="team">
-    <br><br>
-    Engine Supplier:<br>
-    <input name="engine">
-    <br><br>
-    Location:<br>
-    <input name="location">
-    <br><br>
-    Constructor Points:<br>
-    <input name="cpoints">
-    <br><br>
-    GP points:<br>
-    <input name="gppoints">
-    <br><br>
-    GP wins:<br>
-    <input name="gpwins">
-    <br><br>
-    GP poles:<br>
-    <input name="gppoles">
-    <br><br>
-    Sprint points:<br>
-    <input name="sprintpoints">
-    <br><br>
-    Sprint wins:<br>
-    <input name="sprintwins">
-    <br><br>
-    Sprint poles:<br>
-    <input name="sprintpoles">
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
+    <form action="addrecord/" method="post">
+        {% csrf_token %}
+        Team:<br>
+        <input name="team">
+        <br><br>
+        Engine Supplier:<br>
+        <input name="engine">
+        <br><br>
+        Location:<br>
+        <input name="location">
+        <br><br>
+        Constructor Points:<br>
+        <input name="cpoints">
+        <br><br>
+        GP points:<br>
+        <input name="gppoints">
+        <br><br>
+        GP wins:<br>
+        <input name="gpwins">
+        <br><br>
+        GP poles:<br>
+        <input name="gppoles">
+        <br><br>
+        Sprint points:<br>
+        <input name="sprintpoints">
+        <br><br>
+        Sprint wins:<br>
+        <input name="sprintwins">
+        <br><br>
+        Sprint poles:<br>
+        <input name="sprintpoles">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
