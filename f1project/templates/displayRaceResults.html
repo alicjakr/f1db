@@ -24,12 +24,12 @@
     <tbody>
     {% for record in records %}
     <tr>
-        <td>{{record.gp_name}}</td>
+        <td>{{record.gp_name.gp_name}}</td>
         <td>{{record.race_date}}</td>
-        <td>{{record.winner_number}}</td>
-        <td>{{record.winner_name}}</td>
-        <td>{{record.winner_surname}}</td>
-        <td>{{record.team}}</td>
+        <td>{{record.winner_number.number}}</td>
+        <td>{{record.winner_number.name}}</td>
+        <td>{{record.winner_number.surname}}</td>
+        <td>{{record.winner_number.team}}</td>
         <td>{{record.laps_number}}</td>
         <td>{{record.race_time|date:"h:i:s"}}.{{record.race_time.microsecond|stringformat:"06d"|slice:"3"}}</td>
     </tr>

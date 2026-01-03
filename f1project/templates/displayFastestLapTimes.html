@@ -24,11 +24,11 @@
     {% for record in records %}
     <tr>
         <td>{{record.track_name}}</td>
-        <td>{{record.gp_name}}</td>
-        <td>{{record.driver_number}}</td>
-        <td>{{record.driver_name}}</td>
-        <td>{{record.driver_surname}}</td>
-        <td>{{record.team}}</td>
+        <td>{{record.gp_name.gp_name}}</td>
+        <td>{{record.driver_number.number}}</td>
+        <td>{{record.driver_number.name}}</td>
+        <td>{{record.driver_number.surname}}</td>
+        <td>{{record.driver_number.team}}</td>
         <td>{{record.lap_time|date:"i:s"}}.{{record.lap_time.microsecond|stringformat:"06d"|slice:"3"}}</td>
     </tr>
     {% endfor %}

@@ -26,7 +26,7 @@ class Teams(models.Model):
 
 class Races(models.Model):
     round_number=models.IntegerField(primary_key=True)
-    gp_name=models.CharField(max_length=100)
+    gp_name=models.CharField(max_length=100, unique=True)
     gp_fullname=models.CharField(max_length=250)
     start_date=models.DateField()
     end_date=models.DateField()
@@ -38,22 +38,16 @@ class Races(models.Model):
 
 class FastestLapTimes(models.Model):
     track_name=models.CharField(max_length=100, primary_key=True)
-    gp_name=models.CharField(max_length=100)
-    driver_number=models.IntegerField()
-    driver_name=models.CharField(max_length=100)
-    driver_surname=models.CharField(max_length=100)
-    team=models.CharField(max_length=100)
+    gp_name=models.ForeignKey(Races, on_delete=models.CASCADE, to_field="gp_name", db_column="gp_name")
+    driver_number=models.ForeignKey(Drivers, on_delete=models.CASCADE, to_field="number", db_column="driver_number")
     lap_time=models.TimeField()
     class Meta:
         db_table="fastest_lap_times"
 
 class RaceResults(models.Model):
-    gp_name=models.CharField(max_length=100, primary_key=True)
+    gp_name=models.ForeignKey(Races, on_delete=models.CASCADE, to_field="gp_name", db_column="gp_name", primary_key=True)
     race_date=models.DateField()
-    winner_number=models.IntegerField()
-    winner_name=models.CharField(max_length=100)
-    winner_surname=models.CharField(max_length=100)
-    team=models.CharField(max_length=100)
+    winner_number=models.ForeignKey(Drivers, on_delete=models.CASCADE, to_field="number", db_column="winner_number")
     laps_number=models.IntegerField()
     race_time=models.TimeField()
     class Meta:

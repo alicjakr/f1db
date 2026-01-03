@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -10,11 +11,11 @@ def main_page(request):
     return render(request, 'main.html')
 
 def display_drivers(request):
-    drivers_records=Drivers.objects.all()
+    drivers_records=Drivers.objects.all().order_by('-current_points')
     return render(request,'displayDrivers.html',{'records':drivers_records})
 
 def display_teams(request):
-    teams_records=Teams.objects.all()
+    teams_records=Teams.objects.all().order_by('-constructor_points')
     return render(request, 'displayTeams.html', {'records':teams_records})
 
 def display_races(request):
@@ -22,7 +23,7 @@ def display_races(request):
     return render(request, 'displayRaces.html', {'records':races_records})
 
 def display_fastest_lap_times(request):
-    fastest_lap_times_records=FastestLapTimes.objects.all()
+    fastest_lap_times_records=FastestLapTimes.objects.select_related('driver_number', 'gp_name').all().order_by('gp_name__round_number')
     return render(request, 'displayFastestLapTimes.html', {'records':fastest_lap_times_records})
 
 def display_race_results(request):
@@ -63,3 +64,9 @@ def add_team_record(request):
     team=Teams(team=r_team, engine_supplier=r_engine, location=r_location, constructor_points=r_cp, gp_points=r_gppoints, gp_wins=r_gpwins, gp_poles=r_gppoles, sprint_points=r_sprintpoints, sprint_wins=r_sprintwins, sprint_poles=r_sprintpoles)
     team.save()
     return HttpResponseRedirect(reverse('teams'))
+
+def drivers_fastest_lap(request):
+    #display: NUMBER - NAME - SURNAME - TEAM - COUNT OF FASTEST LAPS
+    #use table FastestLapTimes
+    fieldname="Number"
+    return render(request, 'displayDriversFastestLap.html', {'records':FastestLapTimes.objects.values(fieldname).order_by(fieldname).annotate(the_count=Count(fieldname))})
