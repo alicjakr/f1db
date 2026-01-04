@@ -59,14 +59,14 @@ def add_team_record(request):
     r_gppoles=request.POST['gppoles']
     r_sprintpoints=request.POST['sprintpoints']
     r_sprintwins=request.POST['sprintwins']
-    r_sprintpoles=request.POST['sprintwins']
+    r_sprintpoles=request.POST['sprintpoles']
 
     team=Teams(team=r_team, engine_supplier=r_engine, location=r_location, constructor_points=r_cp, gp_points=r_gppoints, gp_wins=r_gpwins, gp_poles=r_gppoles, sprint_points=r_sprintpoints, sprint_wins=r_sprintwins, sprint_poles=r_sprintpoles)
     team.save()
     return HttpResponseRedirect(reverse('teams'))
 
-def drivers_fastest_lap(request):
+def driversfastestlap(request):
     #display: NUMBER - NAME - SURNAME - TEAM - COUNT OF FASTEST LAPS
     #use table FastestLapTimes
-    fieldname="Number"
-    return render(request, 'displayDriversFastestLap.html', {'records':FastestLapTimes.objects.values(fieldname).order_by(fieldname).annotate(the_count=Count(fieldname))})
+    records=FastestLapTimes.objects.values('driver_number__number', 'driver_number__name', 'driver_number__surname', 'driver_number__team').annotate(the_count=Count("driver_number")).order_by('-the_count')
+    return render(request, 'displayDriversFastestLap.html', {'records':records})

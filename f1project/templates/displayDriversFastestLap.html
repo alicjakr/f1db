@@ -7,6 +7,28 @@
     <title>Drivers fastest laps</title>
 </head>
 <body>
-
+<table border="1">
+    <caption>Fastest Laps Count</caption>
+    <thead>
+    <tr>
+        <th>Driver's number</th>
+        <th>Driver's name</th>
+        <th>Driver's surname</th>
+        <th>Driver's team</th>
+        <th>Fastest laps number</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{record.driver_number__number}}</td>
+        <td>{{record.driver_number__name}}</td>
+        <td>{{record.driver_number__surname}}</td>
+        <td>{{record.driver_number__team}}</td>
+        <td>{{record.the_count}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 </body>
 </html>

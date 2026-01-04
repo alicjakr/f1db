@@ -30,6 +30,6 @@ urlpatterns = [
     path('adddriver/addrecord/', views.add_driver_record, name='adddriver_record'),
     path('addteam/', views.add_team, name='addteam'),
     path('addteam/addrecord/', views.add_team_record, name='addteam_record'),
-    path('driversfastestlap/', views.drivers_fastest_lap, name='driversfastlap'),
+    path('driversfastestlap/', views.driversfastestlap, name='driversfastestlap'),
     path('', views.main_page, name='main'),
 ]
