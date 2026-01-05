@@ -2,6 +2,8 @@ from django.db.models import Count
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib.postgres.aggregates import StringAgg
+
 
 from .models import *
 from django.template import loader
@@ -70,3 +72,7 @@ def driversfastestlap(request):
     #use table FastestLapTimes
     records=FastestLapTimes.objects.values('driver_number__number', 'driver_number__name', 'driver_number__surname', 'driver_number__team').annotate(the_count=Count("driver_number")).order_by('-the_count')
     return render(request, 'displayDriversFastestLap.html', {'records':records})
+
+def driverwins(request):
+    wins_records=RaceResults.objects.values('winner_number__number', 'winner_number__name', 'winner_number__surname', 'winner_number__team').annotate(win_count=Count("winner_number__number"), countries=StringAgg('gp_name__gp_name', delimiter=', ', distinct=True)).order_by('-win_count')
+    return render(request, 'displayDriverWins.html', {'records':wins_records})

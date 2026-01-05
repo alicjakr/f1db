@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Win Amounts</title>
+</head>
+<body>
+<table border="1">
+    <caption>Win Amounts</caption>
+    <thead>
+    <tr>
+        <th>Driver's number</th>
+        <th>Driver's name</th>
+        <th>Driver's surname</th>
+        <th>Driver's team</th>
+        <th>Number of wins</th>
+        <th>Countries with wins</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+    <tr>
+        <td>{{record.winner_number__number}}</td>
+        <td>{{record.winner_number__name}}</td>
+        <td>{{record.winner_number__surname}}</td>
+        <td>{{record.winner_number__team}}</td>
+        <td>{{record.win_count}}</td>
+        <td>{{record.countries}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
