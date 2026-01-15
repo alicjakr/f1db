@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t#^m)i#rq=ssxkwd$01f^)usq2b985=qx)$3&(m8bl_i8p65pt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'f1project.urls'
@@ -73,7 +74,7 @@ WSGI_APPLICATION = 'f1project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES={
+'''DATABASES={
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "template1",
@@ -81,6 +82,17 @@ DATABASES={
         "PASSWORD": "",
         "HOST": "localhost",
         "PORT": "5432",
+    }
+}'''
+
+DATABASES={
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("PGDATABASE"),
+        "USER": os.environ.get("PGUSER"),
+        "PASSWORD": os.environ.get("PGPASSWORD"),
+        "HOST": os.environ.get("PGHOST"),
+        "PORT": os.environ.get( "PGPORT", "5432"),
     }
 }
 
@@ -122,6 +134,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if DEBUG:
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
