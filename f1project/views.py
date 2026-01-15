@@ -3,11 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.postgres.aggregates import StringAgg
-
-
 from .models import *
 from django.template import loader
-#class name
 
 def main_page(request):
     return render(request, 'main.html')
@@ -68,8 +65,6 @@ def add_team_record(request):
     return HttpResponseRedirect(reverse('teams'))
 
 def driversfastestlap(request):
-    #display: NUMBER - NAME - SURNAME - TEAM - COUNT OF FASTEST LAPS
-    #use table FastestLapTimes
     records=FastestLapTimes.objects.values('driver_number__number', 'driver_number__name', 'driver_number__surname', 'driver_number__team').annotate(the_count=Count("driver_number")).order_by('-the_count')
     return render(request, 'displayDriversFastestLap.html', {'records':records})
 
