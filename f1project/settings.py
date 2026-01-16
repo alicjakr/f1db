@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'f1project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES={
+'''DATABASES={
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.environ.get("PGDATABASE"),
@@ -84,9 +84,9 @@ DATABASES={
         "HOST": os.environ.get("PGHOST"),
         "PORT": os.environ.get( "PGPORT", "5432"),
     }
-}
+}'''
 
-'''DATABASES={
+DATABASES={
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "template1",
@@ -95,7 +95,7 @@ DATABASES={
         "HOST": "localhost",
         "PORT": "5432",
     }
-}'''
+}
 
 
 # Password validation
