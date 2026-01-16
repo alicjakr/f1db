@@ -45,7 +45,7 @@ class FastestLapTimes(models.Model):
         db_table="fastest_lap_times"
 
 class RaceResults(models.Model):
-    gp_name=models.ForeignKey(Races, on_delete=models.CASCADE, to_field="gp_name", db_column="gp_name", primary_key=True)
+    gp_name=models.ForeignKey(Races, on_delete=models.CASCADE, to_field="gp_name", db_column="gp_name")
     race_date=models.DateField()
     winner_number=models.ForeignKey(Drivers, on_delete=models.CASCADE, to_field="number", db_column="winner_number")
     laps_number=models.IntegerField()
