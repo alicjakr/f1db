@@ -63,7 +63,7 @@ INSERT INTO drivers VALUES
 
 CREATE TABLE IF NOT EXISTS races (
     round_number INT PRIMARY KEY,
-    GP_name VARCHAR(255) NOT NULL,
+    GP_name VARCHAR(255) NOT NULL UNIQUE,
     GP_fullname VARCHAR(255) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
@@ -164,8 +164,3 @@ INSERT INTO race_results VALUES
     ('Las Vegas', '2025-11-22', 1, 50, '1:21:08.429'),
     ('Qatar', '2025-11-30', 1, 57, '1:24:38.241'),
     ('Abu Dhabi', '2025-12-07', 1, 58, '1:26:07.469');
-
-CREATE PROCEDURE add_driver
-LANGUAGE SQL
-AS $$
-INSERT INTO drivers VALUES ()

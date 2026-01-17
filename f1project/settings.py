@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'f1project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES={
+'''DATABASES={
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.environ.get("PGDATABASE"),
@@ -83,6 +83,17 @@ DATABASES={
         "PASSWORD": os.environ.get("PGPASSWORD"),
         "HOST": os.environ.get("PGHOST"),
         "PORT": os.environ.get( "PGPORT", "5432"),
+    }
+}'''
+
+DATABASES={
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "template1",
+        "USER": "alicjakrupczynska",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
