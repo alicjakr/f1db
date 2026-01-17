@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS races CASCADE;
 DROP TABLE IF EXISTS drivers CASCADE;
 DROP TABLE IF EXISTS team_specifications CASCADE;
 
-
 CREATE TABLE IF NOT EXISTS team_specifications (
     team VARCHAR(255) PRIMARY KEY,
     engine_supplier VARCHAR(255) NOT NULL,
@@ -132,7 +131,7 @@ INSERT INTO fastest_lap_times VALUES
     ('Yas Marina Circuit', 'Abu Dhabi', 16, '1:26.725');
 
 CREATE TABLE IF NOT EXISTS race_results (
-    GP_name VARCHAR(255) PRIMARY KEY,
+    GP_name VARCHAR(255) REFERENCES races (GP_name),
     race_date DATE NOT NULL,
     winner_number INT REFERENCES drivers (number),
     laps_number INT NOT NULL,

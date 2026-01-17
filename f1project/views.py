@@ -40,7 +40,7 @@ def add_driver_record(request):
     r_team=request.POST['team']
     r_currentpoints=request.POST['currentpoints']
 
-    driver=Drivers(number=r_number, name=r_first, surname=r_last, team=r_team, current_points=r_currentpoints)
+    driver=Drivers(number=r_number, name=r_first, surname=r_last, team_id=r_team, current_points=r_currentpoints)
     driver.save()
     return HttpResponseRedirect(reverse('drivers'))
 
