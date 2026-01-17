@@ -1,10 +1,40 @@
-DROP TABLE drivers, races, fastest_lap_times, race_results, team_specifications;
+DROP TABLE IF EXISTS race_results CASCADE;
+DROP TABLE IF EXISTS fastest_lap_times CASCADE;
+DROP TABLE IF EXISTS races CASCADE;
+DROP TABLE IF EXISTS drivers CASCADE;
+DROP TABLE IF EXISTS team_specifications CASCADE;
+
+
+CREATE TABLE IF NOT EXISTS team_specifications (
+    team VARCHAR(255) PRIMARY KEY,
+    engine_supplier VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    constructor_points INT NOT NULL,
+    GP_points INT NOT NULL,
+    GP_wins INT NOT NULL,
+    GP_poles INT NOT NULL,
+    sprint_points INT NOT NULL,
+    sprint_wins INT NOT NULL,
+    sprint_poles INT NOT NULL
+);
+
+INSERT INTO team_specifications VALUES
+    ('McLaren', 'Mercedes', 'Great Britain', 833, 775, 14, 13, 58, 3, 3),
+    ('Mercedes', 'Mercedes', 'Great Britain', 469, 424, 2, 2, 45, 0, 1),
+    ('Alpine', 'Renault', 'Great Britain', 22, 20, 0, 0, 2, 0, 0),
+    ('Sauber', 'Ferrari', 'Switzerland', 70, 70, 0, 0, 0, 0, 0),
+    ('Haas F1 Team', 'Ferrari', 'United States', 79, 73, 0, 0, 6, 0, 0),
+    ('Red Bull Racing', 'Honda RBPT', 'Great Britain', 451, 410, 8, 8, 41, 2, 1),
+    ('Racing Bulls', 'Honda RBPT', 'Italy', 92, 88, 0, 0, 4, 0, 0),
+    ('Williams', 'Mercedes', 'Great Britain', 137, 124, 0, 0, 13, 0, 0),
+    ('Ferrari', 'Ferrari', 'Italy', 398, 360, 0, 1, 38, 1, 1),
+    ('Aston Martin Racing', 'Mercedes', 'Great Britain', 89, 80, 0, 0, 9, 0, 0);
 
 CREATE TABLE IF NOT EXISTS drivers (
     number INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
-    team VARCHAR(255) NOT NULL,
+    team VARCHAR(255) REFERENCES team_specifications (team),
     current_points INT
 );
 
@@ -67,31 +97,6 @@ INSERT INTO races VALUES
     (22, 'Las Vegas', 'FORMULA 1 HEINEKEN LAS VEGAS GRAND PRIX 2025', '2025-11-20', '2025-11-22', 309.958, 6.201, 50),
     (23, 'Qatar', 'FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2025', '2025-11-28', '2025-11-30', 308.611, 5.419, 57), --sprint
     (24, 'Abu Dhabi', 'FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2025', '2025-12-05', '2025-12-07', 306.183, 5.281, 58);
-
-CREATE TABLE IF NOT EXISTS team_specifications (
-    team VARCHAR(255) PRIMARY KEY,
-    engine_supplier VARCHAR(255) NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    constructor_points INT NOT NULL,
-    GP_points INT NOT NULL,
-    GP_wins INT NOT NULL,
-    GP_poles INT NOT NULL,
-    sprint_points INT NOT NULL,
-    sprint_wins INT NOT NULL,
-    sprint_poles INT NOT NULL
-);
-
-INSERT INTO team_specifications VALUES
-    ('McLaren', 'Mercedes', 'Great Britain', 833, 775, 14, 13, 58, 3, 3),
-    ('Mercedes', 'Mercedes', 'Great Britain', 469, 424, 2, 2, 45, 0, 1),
-    ('Alpine', 'Renault', 'Great Britain', 22, 20, 0, 0, 2, 0, 0),
-    ('Sauber', 'Ferrari', 'Switzerland', 70, 70, 0, 0, 0, 0, 0),
-    ('Haas F1 Team', 'Ferrari', 'United States', 79, 73, 0, 0, 6, 0, 0),
-    ('Red Bull Racing', 'Honda RBPT', 'Great Britain', 451, 410, 8, 8, 41, 2, 1),
-    ('Racing Bulls', 'Honda RBPT', 'Italy', 92, 88, 0, 0, 4, 0, 0),
-    ('Williams', 'Mercedes', 'Great Britain', 137, 124, 0, 0, 13, 0, 0),
-    ('Ferrari', 'Ferrari', 'Italy', 398, 360, 0, 1, 38, 1, 1),
-    ('Aston Martin', 'Mercedes', 'Great Britain', 89, 80, 0, 0, 9, 0, 0);
 
 CREATE TABLE IF NOT EXISTS fastest_lap_times (
     track_name VARCHAR(255) PRIMARY KEY,

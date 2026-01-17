@@ -1,14 +1,6 @@
 from django.db import models
 
 #Creating models
-class Drivers(models.Model):
-    number=models.IntegerField(primary_key=True)
-    name=models.CharField(max_length=100)
-    surname=models.CharField(max_length=100)
-    team=models.CharField(max_length=100)
-    current_points=models.IntegerField()
-    class Meta:
-        db_table="drivers"
 
 class Teams(models.Model):
     team=models.CharField(max_length=100, primary_key=True)
@@ -23,6 +15,15 @@ class Teams(models.Model):
     sprint_poles=models.IntegerField()
     class Meta:
         db_table="team_specifications"
+
+class Drivers(models.Model):
+    number=models.IntegerField(primary_key=True)
+    name=models.CharField(max_length=100)
+    surname=models.CharField(max_length=100)
+    team=models.ForeignKey(Teams, on_delete=models.CASCADE, to_field="team", db_column="team")
+    current_points=models.IntegerField()
+    class Meta:
+        db_table="drivers"
 
 class Races(models.Model):
     round_number=models.IntegerField(primary_key=True)

@@ -10,7 +10,7 @@ def main_page(request):
     return render(request, 'main.html')
 
 def display_drivers(request):
-    drivers_records=Drivers.objects.all().order_by('-current_points')
+    drivers_records=Drivers.objects.select_related('team').all().order_by('-current_points')
     return render(request,'displayDrivers.html',{'records':drivers_records})
 
 def display_teams(request):
